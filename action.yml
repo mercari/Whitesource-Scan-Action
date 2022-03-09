@@ -1,0 +1,32 @@
+name: 'Whitesource Scan'
+author: 'Azeem Shezad Ilyas'
+description: 'Run a scan using the Whitesource unified agent.'
+inputs:
+  wssUrl:
+    description: 'The relevent URL to your orgs WS Server. Can be found under the Integrate tab of your Whitesource dashboard (e.g. https://app-eu.whitesourcesoftware.com/agent).'
+    required: true
+  apiKey:
+    description: 'API key from Whitesource.'
+    required: true
+  productName:
+    description: 'Name of the Product that this project falls under.'
+    required: false
+  projectName:
+    description: 'Name of the Project. Repository name if not set. Default: Repository Name without owner.'
+    required: false
+  configFile:
+    description: 'Filename of whitesource configuration if being used (including file path)'
+    required: false
+  extraCommandsFile:
+    description: 'Filename of a file to run before the scan begins.'
+    required: false
+  failBuildOnPolicyViolations:
+    description: '(true/false) Enables Policy violation checks. Still updates inventory and will fail the build when a policy violation is found.'
+    required: false
+    default: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+branding:
+  icon: 'alert-triangle'
+  color: 'yellow'
